@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, StatusBar} from 'react-native';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -7,7 +7,7 @@ export default function App(props) {
 
     return (
         <View style={styles.container}>
-
+            <StatusBar barStyle="light-content"/>
             <AppNavigator/>
         </View>
     );

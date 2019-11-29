@@ -1,22 +1,39 @@
 import React from 'react';
-import {createTabNavigator} from "react-navigation-tabs";
-import {createAppContainer, createSwitchNavigator} from 'react-navigation';
-import FavoriteCatalogList from "./FavoriteCatalogList";
-import GlobalCatalogList from "./GlobalCatalogList";
-import SelfCatalogList from "./SelfCatalogList";
 
-const CatalogTab = createTabNavigator({
-    //Drawer Optons and indexing
-    Favorite: FavoriteCatalogList,
-    Global: GlobalCatalogList,
-    Self: SelfCatalogList
-});
+import {createAppContainer} from 'react-navigation';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 
-export default createAppContainer(
-    createSwitchNavigator({
-        // You could add another route here for authentication.
-        // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-        Catalog: CatalogTab,
-    })
-);
+import FavoriteCatalogList from './FavoriteCatalogList';
+import GlobalCatalogList from './GlobalCatalogList';
+import SelfCatalogList from './SelfCatalogList';
 
+
+export default createAppContainer(createMaterialTopTabNavigator(
+    {
+        Tab1: {
+            screen: () => (<FavoriteCatalogList/>),
+            navigationOptions: {
+                title: 'Продукты',
+            },
+        },
+        Tab2: {
+            screen:  () => (<GlobalCatalogList/>),
+            navigationOptions: {
+                title: 'Блюда',
+            },
+
+        },
+        Tab3: {
+            screen:  () => (<SelfCatalogList/>),
+            navigationOptions: {
+                title: 'Избранное',
+            },
+        },
+    },
+    {
+        initialRouteName: 'Tab1',
+        tabBarOptions: {
+            style: {backgroundColor: '#394249'}
+        }
+    }
+));

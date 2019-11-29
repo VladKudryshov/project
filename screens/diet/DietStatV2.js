@@ -1,16 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
 
-export default function DietStat() {
+export default function DietStatV2() {
     return <View style={{
-        height: 170,
+        flex: 1,
+        height: 150,
         backgroundColor: '#373F46',
-        paddingLeft: 30,
-        paddingRight: 30,
+        padding: 10,
         paddingTop: 30,
-        paddingBottom: 10,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
         justifyContent: 'space-between'
     }}>
         <View style={styles.container}>
@@ -71,11 +70,11 @@ export default function DietStat() {
 
 const styles = StyleSheet.create({
     container: {flex: 1, flexDirection: 'row', justifyContent: 'space-between'},
-    infoItem: {width: '30%', height: 5, backgroundColor: "#6e6e6e", borderRadius: 5, position: 'relative'},
-    infoItemLong: {width: '100%', height: 5, backgroundColor: "#6e6e6e", borderRadius: 5, position: 'relative'},
-    infoItemText: {position: 'absolute', width: '100%', textAlign: 'center', bottom: -20, color: '#fff', fontSize: 12},
+    infoItem: {width: '30%', height: 15, backgroundColor: "#6e6e6e", borderRadius: 5, position: 'relative'},
+    infoItemLong: {width: '100%', height: 15, backgroundColor: "#6e6e6e", borderRadius: 5, position: 'relative'},
+    infoItemText: {position: 'absolute', width: '100%', textAlign: 'center', color: '#fff', fontSize: 12},
     infoItemCurrentValue: {position: 'absolute', left: '30%', top: -20, color: '#fff', fontSize: 12},
     infoItemFinishValue: {position: 'absolute', right: 0, bottom: -20, color: '#fff', fontSize: 12},
     infoItemBar: {borderRadius: 5, overflow: 'hidden'},
-    infoItemBarProgress: {width: '30%', height: 5, backgroundColor: '#66ff8b'}
+    infoItemBarProgress: {width: '30%', height: 15, backgroundColor: '#66ff8b'}
 });

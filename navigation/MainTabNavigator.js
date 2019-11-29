@@ -31,6 +31,23 @@ class NavigationDrawerStructure extends Component {
     }
 }
 
+class GoBack extends Component {
+    toggleDrawer = () => {
+        this.props.navigationProps.goBack();
+    };
+
+    render() {
+        return (
+
+            <View>
+                <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
+                    <TabBarIcon name="md-arrow-round-back" color="#fff"/>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+}
+
 class NavigationDrawerRight extends Component {
     toggleDrawer = () => {
         try {
@@ -72,14 +89,7 @@ const FirstActivity_StackNavigator = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             title: 'Demo Screen 1',
             headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-            headerStyle: {
-                backgroundColor: '#FF9800',
-            },
-            headerLeftContainerStyle:{
-                paddingRight: 10,
-                paddingLeft: 10,
-            },
-            headerTintColor: '#fff',
+            ...defaultStyles
         }),
     },
 });
@@ -93,32 +103,14 @@ const dietStackNavigator = createStackNavigator({
             title:  moment().format("DD/MM/YYYY"),
             headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
             headerRight: <NavigationDrawerRight navigationProps={navigation} />,
-            headerStyle: {
-                backgroundColor: '#394249',
-            },
-            headerLeftContainerStyle:{
-                paddingRight: 10,
-                paddingLeft: 10,
-            },
-            headerRightContainerStyle:{
-                paddingRight: 10,
-                paddingLeft: 10,
-            },
-            headerTintColor: '#fff',
+            ...defaultStyles
         }),
     },ASD: {
     screen: CatalogScreen,
         navigationOptions: ({ navigation }) => ({
-        title: 'Demo Screen 3',
-        headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-        headerStyle: {
-            backgroundColor: '#FF9800',
-        },
-        headerLeftContainerStyle:{
-            paddingRight: 10,
-            paddingLeft: 10,
-        },
-        headerTintColor: '#fff',
+        title: 'Catalog',
+        headerLeft: <GoBack navigationProps={navigation} />,
+            ...defaultStyles
     }),
 },
 });
@@ -130,14 +122,8 @@ const Screen2_StackNavigator = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             title: 'Demo Screen 2',
             headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-            headerStyle: {
-                backgroundColor: '#FF9800',
-            },
-            headerLeftContainerStyle:{
-                paddingRight: 10,
-                paddingLeft: 10,
-            },
-            headerTintColor: '#fff',
+            ...defaultStyles
+
         }),
     },
 });
@@ -149,17 +135,26 @@ const Screen3_StackNavigator = createStackNavigator({
         navigationOptions: ({ navigation }) => ({
             title: 'Demo Screen 3',
             headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-            headerStyle: {
-                backgroundColor: '#FF9800',
-            },
-            headerLeftContainerStyle:{
-                paddingRight: 10,
-                paddingLeft: 10,
-            },
-            headerTintColor: '#fff',
+            ...defaultStyles
+
         }),
     }
 });
+
+const defaultStyles = {
+    headerStyle: {
+        backgroundColor: '#394249',
+    },
+    headerLeftContainerStyle:{
+        paddingRight: 10,
+        paddingLeft: 10,
+    },
+    headerRightContainerStyle:{
+        paddingRight: 10,
+        paddingLeft: 10,
+    },
+    headerTintColor: '#fff',
+}
 
 const DrawerNavigatorExample = createDrawerNavigator({
     //Drawer Optons and indexing
@@ -186,3 +181,4 @@ const DrawerNavigatorExample = createDrawerNavigator({
 });
 
 export default DrawerNavigatorExample;
+
